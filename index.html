@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bestell App</title>
+    <link rel="icon" href="./assets/icons/favicon/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./styles/assets.css">
+    <link rel="stylesheet" href="./styles/fonts.css">
+    <link rel="stylesheet" href="./styles/standard.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+
+    <script src="./scripts/db.js"></script>
+    <script src="./scripts/template.js"></script>
+    <script src="./script.js"></script>
+</head>
+
+<body onload="init()">
+
+    <div id="renderd-overlay-basket" class="basket-overlay d_none">
+
+        <h1>Dein Warenkorb</h1>
+
+        <div id="basket-overlay-meal"></div>
+
+        <div class="overlay-price-section margin-top-24"></div>
+
+        <div class="basket-prices-and-names-overlay">
+            <div>
+                <p class="margin-top-8">Zwischensumme</p>
+                <p class="margin-top-8">Lieferkosten</p>
+                <p class="total-price-text margin-top-8">Gesamt</p>
+            </div>
+            <div class="total-price-number-overlay" id="overlay-price"></div>
+        </div>
+        <button class="order-btn-overlay margin-top-24" onclick="emptyBasket()">Jetzt bestellen</button>
+        <div id="overlay-order-notification"></div>
+
+        <button class="basket-overlay-btn-fix margin-top-24" onclick="toggleOverlay()">WARENKORB</button>
+
+    </div>
+
+    <header>
+        <a href="./index.html"><img src="./assets/icons/logo/Logo.png" alt="logo" class="logo"></a>
+    </header>
+
+    <div class="content-wrapper">
+
+        <section class="content">
+
+            <div class="header-images-section">
+                <img class="img1" src="./assets/img/burger-1920.jpg" alt="burger">
+                <img class="restaurant-icon-round" src="./assets/icons/pizza.png" alt="pizza icon">
+            </div>
+
+            <div class="restaurant-section">
+                <h1 class="restaurant-headline">Paradies Pizza</h1>
+                <p class="rating">Bewertung (4.5 von 5 Sternen)</p>
+
+                <div class="meal-option">
+                    <img class="icon-arrow" src="./assets/icons/arrow_right_orange.png" alt="arrow right">
+                    <a href="#Hauptgerichte">Hauptgerichte</a>
+                    <a href="#Dessert">Dessert</a>
+                </div>
+            </div>
+
+            <img class="img2" src="./assets/img/french-fries-1920.jpg" alt="fries">
+            <h2 class="meal-headline" id="Hauptgerichte">Hauptgerichte</h2>
+            <div id="meals-section" class="meals-section">
+            </div>
+            <h2 class="meal-headline" id="Dessert">Dessert</h2>
+            <p class="single-meal-description meal-headline">Hier kannst du bald auch leckere Desserts bestellen</p>
+            <img class="img2" src="./assets/img/pizza-1920.jpg" alt="pizza">
+
+        </section>
+
+        <section class="basket-wrapper">
+
+            <div class="basket">
+                <h1 class="basket-headline">Warenkorb</h1>
+                <div id="renderd-basket"></div>
+
+                <div class="price-section margin-top-24">
+                    <div class="basket-price-names">
+                        <p class="margin-top-8">Zwischensumme</p>
+                        <p class="margin-top-8">Lieferkosten</p>
+                        <p class="total-price-text margin-top-8">Gesamt</p>
+                        <button class="order-btn margin-top-24" onclick="emptyBasket()">Jetzt bestellen</button>
+                        <div id="order-notification"></div>
+                    </div>
+
+                    <div class="total-price-number" id="price">
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <button class="basket-overlay-btn margin-top-24" onclick="toggleOverlay()">WARENKORB</button>
+
+    <footer></footer>
+
+</body>
+
+</html>

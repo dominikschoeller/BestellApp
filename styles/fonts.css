@@ -1,0 +1,27 @@
+.meal-headline-basket {
+    font-weight: bold;
+}
+
+.total-price-text {
+    font-weight: bold;
+}
+
+.order-notification {
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 900px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+}
