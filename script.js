@@ -122,7 +122,6 @@ function getOrderBtnTemplate() {
     let overlayOrderNotificationContentRef = document.getElementById("overlay-order-notification");
     overlayOrderNotificationContentRef.innerHTML = "";
     overlayOrderNotificationContentRef.innerHTML += renderOrderBtnTemplate();
-
 }
 
 function clearOrderBtnTemplate() {
@@ -136,5 +135,4 @@ function clearOrderBtnTemplate() {
 function toggleOverlay() {
     let overlay = document.getElementById('renderd-overlay-basket');
     overlay.classList.toggle('d_none');
-    
 }
