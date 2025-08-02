@@ -4,35 +4,33 @@ let totalPrice = 0;
 let deliveryCost = 5;
 
 
-function init(){
+function init() {
     getFromLocalStorage();
     renderMeals();
     calculatePrice();
     renderBasket();
+    renderBasketBtnValue();
 }
 
-function renderMeals(){
+function renderMeals() {
     let mealContentRef = document.getElementById("meals-section");
     mealContentRef.innerHTML = "";
 
     for (let mealIndex = 0; mealIndex < myDishes.length; mealIndex++) {
-        mealContentRef.innerHTML += getMealTamplate(mealIndex); 
+        mealContentRef.innerHTML += getMealTamplate(mealIndex);
     }
 }
 
-function renderBasket(){
+function renderBasket() {
     let basketContentRef = document.getElementById("renderd-basket");
     basketContentRef.innerHTML = "";
-    let overlayBasketContentRef = document.getElementById("basket-overlay-meal");
-    overlayBasketContentRef.innerHTML = "";
 
     for (let basketIndex = 0; basketIndex < currentBasket.length; basketIndex++) {
         basketContentRef.innerHTML += renderBasketTemplate(basketIndex);
-        overlayBasketContentRef.innerHTML += renderBasketTemplate(basketIndex);
     }
 }
 
-function getFromLocalStorage(){
+function getFromLocalStorage() {
     let myArr = JSON.parse(localStorage.getItem("myBasket"));
     if (myArr != null) {
         currentBasket = myArr
@@ -46,14 +44,14 @@ function getMeal(mealIndex) {
     if (existing) {
         existing.count += 1;
     } else {
-        currentBasket.push({...currentMeal, count: 1 });
+        currentBasket.push({ ...currentMeal, count: 1 });
     }
     saveToLocalStorage(currentBasket);
     renderBasket();
     clearOrderBtnTemplate();
 }
 
-function saveToLocalStorage(currentBasket){
+function saveToLocalStorage(currentBasket) {
     localStorage.setItem("myBasket", JSON.stringify(currentBasket));
     calculatePrice();
 }
@@ -83,31 +81,28 @@ function removeFromBasket(basketIndex) {
     renderBasket();
 }
 
-function calculatePrice(){
+function calculatePrice() {
     currentPrice = 0;
-    for (let priceIndex = 0; priceIndex< currentBasket.length; priceIndex++) {
+    for (let priceIndex = 0; priceIndex < currentBasket.length; priceIndex++) {
         currentBasket[priceIndex].sumPrice = currentBasket[priceIndex].count * currentBasket[priceIndex].price;
         currentPrice += currentBasket[priceIndex].sumPrice;
     }
     calculateTotalPrice();
     renderPrice();
+    renderBasketBtnValue();
 }
 
 function calculateTotalPrice() {
     totalPrice = currentPrice + deliveryCost;
 }
 
-function renderPrice(){
+function renderPrice() {
     let priceContentRef = document.getElementById("price");
     priceContentRef.innerHTML = "";
     priceContentRef.innerHTML += renderPriceTemplate();
-
-    let overlayPriceContentRef = document.getElementById("overlay-price");
-    overlayPriceContentRef.innerHTML = "";
-    overlayPriceContentRef.innerHTML += renderPriceTemplate();
 }
 
-function emptyBasket(){
+function emptyBasket() {
     currentBasket.length = 0;
     saveToLocalStorage(currentBasket);
     calculatePrice();
@@ -119,20 +114,36 @@ function getOrderBtnTemplate() {
     let orderNotificationContentRef = document.getElementById("order-notification");
     orderNotificationContentRef.innerHTML = "";
     orderNotificationContentRef.innerHTML += renderOrderBtnTemplate();
-    let overlayOrderNotificationContentRef = document.getElementById("overlay-order-notification");
-    overlayOrderNotificationContentRef.innerHTML = "";
-    overlayOrderNotificationContentRef.innerHTML += renderOrderBtnTemplate();
 }
 
 function clearOrderBtnTemplate() {
     let orderNotificationContentRef = document.getElementById("order-notification");
     orderNotificationContentRef.innerHTML = "";
-    let overlayOrderNotificationContentRef = document.getElementById("overlay-order-notification");
-    overlayOrderNotificationContentRef.innerHTML = "";
 }
 
-
 function toggleOverlay() {
-    let overlay = document.getElementById('renderd-overlay-basket');
-    overlay.classList.toggle('d_none');
+    let overlayBtnFixRef = document.getElementById('basket-overlay-btn-fix');
+    let overlayBtnRef = document.getElementById('basket-overlay-btn');
+    let overlayBasektRef = document.getElementById('basket-wrapper');
+    let contentRef = document.getElementById('content');
+
+    if (overlayBasektRef.classList.contains('overlay-display-none')) {
+        overlayBasektRef.classList.remove('overlay-display-none');
+        contentRef.classList.add('d_none');
+        overlayBtnFixRef.classList.remove('d_none');
+        overlayBtnRef.classList.add('d_none')
+    }
+    else {
+        overlayBasektRef.classList.add('overlay-display-none');
+        contentRef.classList.remove('d_none');
+        overlayBtnFixRef.classList.add('d_none');
+        overlayBtnRef.classList.remove('d_none')
+    }
+}
+
+function renderBasketBtnValue(){
+    let basketBtnFixValueRef = document.getElementById('basket-overlay-btn-fix-value');
+    basketBtnFixValueRef.innerHTML = totalPrice.toFixed(2);
+    let basketBtnValueRef = document.getElementById('basket-overlay-btn-value');
+    basketBtnValueRef.innerHTML = totalPrice.toFixed(2);
 }

@@ -26,37 +26,13 @@
 </head>
 
 <body onload="init()">
-
-    <div id="renderd-overlay-basket" class="basket-overlay d_none">
-
-        <h1>Dein Warenkorb</h1>
-
-        <div id="basket-overlay-meal"></div>
-
-        <div class="overlay-price-section margin-top-24"></div>
-
-        <div class="basket-prices-and-names-overlay">
-            <div>
-                <p class="margin-top-8">Zwischensumme</p>
-                <p class="margin-top-8">Lieferkosten</p>
-                <p class="total-price-text margin-top-8">Gesamt</p>
-            </div>
-            <div class="total-price-number-overlay" id="overlay-price"></div>
-        </div>
-        <button class="order-btn-overlay margin-top-24" onclick="emptyBasket()">Jetzt bestellen</button>
-        <div id="overlay-order-notification"></div>
-
-        <button class="basket-overlay-btn-fix margin-top-24" onclick="toggleOverlay()">WARENKORB</button>
-
-    </div>
-
     <header>
         <a href="./index.html"><img src="./assets/icons/logo/Logo.png" alt="logo" class="logo"></a>
     </header>
 
-    <div class="content-wrapper">
+    <main>
 
-        <section class="content">
+        <section class="content" id="content">
 
             <div class="header-images-section">
                 <img class="img1" src="./assets/img/burger-1920.jpg" alt="burger">
@@ -72,6 +48,7 @@
                     <a href="#Hauptgerichte">Hauptgerichte</a>
                     <a href="#Dessert">Dessert</a>
                 </div>
+
             </div>
 
             <img class="img2" src="./assets/img/french-fries-1920.jpg" alt="fries">
@@ -81,33 +58,43 @@
             <h2 class="meal-headline" id="Dessert">Dessert</h2>
             <p class="single-meal-description meal-headline">Hier kannst du bald auch leckere Desserts bestellen</p>
             <img class="img2" src="./assets/img/pizza-1920.jpg" alt="pizza">
-
+        
         </section>
 
-        <section class="basket-wrapper">
-
+        <section class="basket-wrapper overlay-display-none" id="basket-wrapper">
+            
             <div class="basket">
                 <h1 class="basket-headline">Warenkorb</h1>
                 <div id="renderd-basket"></div>
 
                 <div class="price-section margin-top-24">
+
                     <div class="basket-price-names">
                         <p class="margin-top-8">Zwischensumme</p>
                         <p class="margin-top-8">Lieferkosten</p>
                         <p class="total-price-text margin-top-8">Gesamt</p>
-                        <button class="order-btn margin-top-24" onclick="emptyBasket()">Jetzt bestellen</button>
-                        <div id="order-notification"></div>
                     </div>
 
-                    <div class="total-price-number" id="price">
-                    </div>
+                    <div class="total-price-number" id="price"></div>
+
+                    <button class="basket-overlay-btn-fix margin-top-24 d_none" id="basket-overlay-btn-fix"
+                        onclick="toggleOverlay()">WARENKORB&nbsp;<span id="basket-overlay-btn-fix-value"></span>&nbsp;€
+                    </button>
 
                 </div>
-            </div>
-        </section>
-    </div>
 
-    <button class="basket-overlay-btn margin-top-24" onclick="toggleOverlay()">WARENKORB</button>
+                <div id="order-notification"></div>
+
+                <button class="order-btn margin-top-24" onclick="emptyBasket()">Jetzt
+                    bestellen</button>
+            </div>
+
+        </section>
+        
+    </main>
+
+    <button class="basket-overlay-btn margin-top-24 basket-btn-display-none" id="basket-overlay-btn"
+        onclick="toggleOverlay()">WARENKORB&nbsp;<span id="basket-overlay-btn-value"></span>&nbsp;€</button>
 
     <footer></footer>
 

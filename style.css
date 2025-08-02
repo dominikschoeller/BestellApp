@@ -1,10 +1,3 @@
-.content-wrapper {
-    display: flex;
-    flex-direction: row;
-    flex-grow: 1;
-    background-color: rgb(255, 255, 255);
-}
-
 .content {
     width: 100%;
 }
@@ -66,11 +59,6 @@
     margin-bottom: 14px;
 }
 
-.icon-arrow {
-    width: 30px;
-    margin-left: 8px;
-}
-
 .single-meal-text {
     margin-left: 14px;
 }
@@ -88,16 +76,6 @@
     margin-bottom: 14px;
 }
 
-.restaurant-icon-round {
-    width: 100px;
-    border-radius: 50px;
-    padding: 10px;
-    position: absolute;
-    background-color: white;
-    bottom: -50px;
-    box-shadow: 0px 10px 30px -20px rgb(0, 0, 0)
-}
-
 .header-images-section {
     display: flex;
     justify-content: center;
@@ -107,7 +85,7 @@
 .basket-wrapper {
     width: 300px;
     flex-grow: 1;
-    box-shadow: -5px 0px 30px -20px rgb(0, 0, 0)
+    box-shadow: -5px 0px 30px -20px rgb(0, 0, 0);
 }
 
 .basket {
@@ -141,23 +119,13 @@
 .price-section {
     display: flex;
     position: relative;
-    margin-bottom: 80px;
+    margin-bottom: 14px;
 }
 
 .total-price-number {
     position: absolute;
     right: 0;
     text-align: end;
-}
-
-.total-price-number-overlay {
-    text-align: end;
-
-}
-
-.basket-prices-and-names-overlay {
-    display: flex;
-    justify-content: space-between;
 }
 
 .basket-meal-nav-count {
@@ -170,41 +138,38 @@
     left: 160px;
 }
 
-.basket-overlay {
-    overflow-y: auto;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    height: 100vh;
-    inset: 0;
-    background-color: rgb(255, 255, 255);
-    z-index: 50;
-    padding: 25px 50px 40px 50px;
-}
-
-.renderd-overlay-basket {
-    position: relative;
-}
-
 @media only screen and (max-width: 650px) {
     .basket-wrapper {
-        width: 300px;
+        width: 100vw;
         flex-grow: 1;
         box-shadow: -5px 0px 30px -20px rgb(0, 0, 0);
+        position: absolute;
+        background-color: white;
+    }
+
+    .basket {
+    position: sticky;
+    top: 0;
+    height: calc(100vh - 64px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 14px 40px 0 40px;
+    }
+
+    .overlay-display-none{
         display: none;
     }
 }
 
 @media only screen and (max-width: 380px) {
-    .basket-overlay {
-        overflow-y: auto;
-        justify-content: center;
-        align-items: center;
-        position: fixed;
-        height: 100vh;
-        inset: 0;
-        background-color: rgb(255, 255, 255);
-        z-index: 50;
-        padding: 25px 20px 40px 20px;
+    .basket {
+    position: sticky;
+    top: 0;
+    height: calc(100vh - 64px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 14px 20px 0 20px;
     }
 }
